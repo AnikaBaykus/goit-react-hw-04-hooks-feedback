@@ -1,2 +1,0 @@
-(this["webpackJsonphw-04-hooks-feedback"]=this["webpackJsonphw-04-hooks-feedback"]||[]).push([[0],{11:function(e,n,t){"use strict";t.r(n);var c=t(1),o=t.n(c),s=t(3),r=t.n(s),i=(t(8),t(9),t(0));var a=function(){return Object(i.jsx)("div",{className:"App",children:"\u041f\u0440\u0438\u0432\u0435\u0442"})};r.a.render(Object(i.jsx)(o.a.StrictMode,{children:Object(i.jsx)(a,{})}),document.getElementById("root"))},8:function(e,n,t){},9:function(e,n,t){}},[[11,1,2]]]);
-//# sourceMappingURL=main.2842b7f1.chunk.js.map
