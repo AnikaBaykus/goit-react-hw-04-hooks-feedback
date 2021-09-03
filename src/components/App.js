@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import { useState } from 'react';
 import './App.css';
 import Container from './Container';
 import Section from './Section';
@@ -6,67 +6,46 @@ import Statistic from './Statistic';
 import Feedback from './Feedback';
 import Notification from './Notification';
 
-export class App extends Component {
-  static defaultProps = {
-    good: 0,
-    neutral: 0,
-    bad: 0,
+export default function App() {
+  const [good, setGood] = useState(0);
+  const [neutral, setNeutral] = useState(0);
+  const [bad, setBad] = useState(0);
+
+  const feedback = { good, neutral, bad };
+
+  const sumTotal = good + neutral + bad;
+
+  const positiveFeedback = Math.round((good / sumTotal) * 100);
+
+  const onClickBtn = event => {
+    const name = event;
+    if (name === 'good') setGood(state => state + 1);
+    if (name === 'neutral') setNeutral(state => state + 1);
+    if (name === 'bad') setBad(state => state + 1);
+    return;
   };
 
-  state = {
-    good: this.props.good,
-    neutral: this.props.neutral,
-    bad: this.props.bad,
-  };
-
-  sumTotal = () => {
-    const { good, neutral, bad } = this.state;
-    return good + neutral + bad;
-  };
-
-  positiveFeedback = (positive, total) => {
-    return Math.round((positive / total) * 100) || 0;
-  };
-
-  onClickBtn = type => {
-    this.setState(prevState => {
-      return { [type]: prevState[type] + 1 };
-    });
-  };
-
-  render() {
-    const { good, neutral, bad } = this.state;
-    const { state } = this;
-    const total = this.sumTotal();
-    const positivePercentage = this.positiveFeedback(good, total);
-
-    return (
-      <>
-        <Container>
-          <Section title="Please leave feedback">
-            <Feedback
-              options={['good', 'neutral', 'bad']}
-              onFeedback={this.onClickBtn}
+  return (
+    <>
+      <Container>
+        <Section title="Please leave feedback">
+          <Feedback
+            options={['good', 'neutral', 'bad']}
+            onFeedback={onClickBtn}
+          />
+        </Section>
+        <Section title="Statistic">
+          {sumTotal === 0 ? (
+            <Notification message="No feedback given"></Notification>
+          ) : (
+            <Statistic
+              feedback={feedback}
+              total={sumTotal}
+              positivePercentage={positiveFeedback}
             />
-          </Section>
-          <Section title="Statistic">
-            {total === 0 ? (
-              <Notification message="No feedback given"></Notification>
-            ) : (
-              <Statistic
-                feedback={state}
-                good={good}
-                neutral={neutral}
-                bad={bad}
-                total={total}
-                positivePercentage={positivePercentage}
-              />
-            )}
-          </Section>
-        </Container>
-      </>
-    );
-  }
+          )}
+        </Section>
+      </Container>
+    </>
+  );
 }
-
-export default App;

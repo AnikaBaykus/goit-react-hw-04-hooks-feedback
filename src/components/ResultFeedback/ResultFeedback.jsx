@@ -17,14 +17,7 @@ function ResultFeedback({ feedback }) {
     </ul>
   );
 }
+ResultFeedback.propTypes = {
+  feedback: PropTypes.object.isRequired,
+};
 export default ResultFeedback;
-
-//  <li className={s.item}>
-//         <p className={s.name}>Good: {good}</p>
-//       </li>
-//       <li className={s.item}>
-//         <p className={s.name}>Neutral: {neutral}</p>
-//       </li>
-//       <li className={s.item}>
-//         <p className={s.name}>Bad: {bad}</p>
-//       </li>

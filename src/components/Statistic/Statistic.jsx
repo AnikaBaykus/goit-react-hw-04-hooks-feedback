@@ -3,7 +3,7 @@ import ResultFeedback from '../ResultFeedback';
 import s from './Statistic.module.css';
 
 function Statistic(props) {
-  const { feedback, good, neutral, bad, total, positivePercentage } = props;
+  const { feedback, total, positivePercentage } = props;
 
   return (
     <div>
@@ -15,9 +15,7 @@ function Statistic(props) {
 }
 
 Statistic.propTypes = {
-  good: PropTypes.number.isRequired,
-  neutral: PropTypes.number.isRequired,
-  bad: PropTypes.number.isRequired,
+  feedback: PropTypes.object.isRequired,
   total: PropTypes.number.isRequired,
   positivePercentage: PropTypes.number.isRequired,
 };
