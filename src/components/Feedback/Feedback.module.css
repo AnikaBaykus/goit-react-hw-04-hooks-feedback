@@ -1,0 +1,28 @@
+.feedback {
+  display: flex;
+  justify-content: center;
+}
+.button {
+  padding: 5px;
+  font-weight: 400;
+  font-size: 12px;
+  color: rgb(105, 105, 105);
+
+  border-radius: 3px;
+  border: none;
+  cursor: pointer;
+  background: rgb(127, 255, 212);
+  box-shadow: 0 -3px rgb(102, 205, 170) inset;
+  transition: 0.2s;
+}
+
+.button:hover {
+  background: rgb(102, 205, 170);
+}
+.button:active {
+  background: rgb(64, 224, 208);
+  box-shadow: 0 3px rgb(64, 224, 208) inset;
+}
+.button:not(:last-child) {
+  margin-right: 15px;
+}
